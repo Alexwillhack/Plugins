@@ -24,7 +24,7 @@ class Elementor_Slider_Widget extends \Elementor\Widget_Base {
 	
 
 	public function get_categories() {
-		return [ 'general' ];
+		return [ 'qweTheme' ];
 	}
 
 	
