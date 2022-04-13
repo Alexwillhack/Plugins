@@ -34,21 +34,12 @@ class Elementor_Slider_Widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'content_section',
 			[
-				'label' => esc_html__( 'Content', 'qwetheme-widget' ),
+				'label' => esc_html__( 'Slider Images', 'qwetheme-widget' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 
-		$this->add_control(
-			'image',
-			[
-				'label' => esc_html__( 'Choose Image', 'plugin-name' ),
-				'type' => \Elementor\Controls_Manager::MEDIA,
-				'default' => [
-					'url' => \Elementor\Utils::get_placeholder_image_src(),
-				],
-			]
-		);
+		
 
 
 
@@ -58,51 +49,29 @@ class Elementor_Slider_Widget extends \Elementor\Widget_Base {
 				'label' => esc_html__( 'List', 'plugin-name' ),
 				'type' => \Elementor\Controls_Manager::REPEATER,
 				'fields' => [
+					
 					[
-						'name' => 'text',
-						'label' => esc_html__( 'Text', 'plugin-name' ),
-						'type' => \Elementor\Controls_Manager::TEXT,
-						'placeholder' => esc_html__( 'List Item', 'plugin-name' ),
-						'default' => esc_html__( 'List Item', 'plugin-name' ),
-					],
-					[
-						'name' => 'link',
-						'label' => esc_html__( 'Link', 'plugin-name' ),
-						'type' => \Elementor\Controls_Manager::URL,
-						'placeholder' => esc_html__( 'https://your-link.com', 'plugin-name' ),
-					],
+						'name' => 'image',
+						'label' => esc_html__( 'Choose Image', 'qwetheme-widget' ),
+				        'type' => \Elementor\Controls_Manager::MEDIA,
+				        'url' => '',
+				    ],
+					
+					
+					
 				],
 				'default' => [
-					[
-						'text' => esc_html__( 'List Item #1', 'plugin-name' ),
-						'link' => 'https://elementor.com/',
-					],
-					[
-						'text' => esc_html__( 'List Item #2', 'plugin-name' ),
-						'link' => 'https://elementor.com/',
-					],
+					
+				    [
+						'image' => '',
+				    ],
+			
+
+		   	        
 				],
-				'title_field' => '{{{ text }}}',
+				'title_field' => __('Slider Image','qwetheme-widget' ),
 			]
 		);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -111,13 +80,17 @@ class Elementor_Slider_Widget extends \Elementor\Widget_Base {
 
 	}
 
-	
 	protected function render() {
-
 		$settings = $this->get_settings_for_display();
 		
-        echo $settings['url'];
-
+        if( $settings['list']){
+             echo '<div class="owl-carousel slide-one-item">';
+			
+			 foreach ($settings['list'] as $slide){
+				echo '<a href="#"><img src="'. $slide['image']['url'] .'" alt="'.esc_html__('Image','qwetheme-widget') .'" class="img-fluid"></a>';
+			}
+	 echo '</div>';
+        }
 	}
-
+	
 }
