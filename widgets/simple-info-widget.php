@@ -92,7 +92,7 @@ class Elementor_Simple_Info_Widget extends \Elementor\Widget_Base {
 	
 	?>
 
-<div class="intro-engage" style="background-color: <?php echo esc_attr($settings['info_color']); ?>;">
+<div class="intro-engage">
 		<?php if($settings['info_title']){ ?><h2><?php echo esc_attr($settings['info_title']); ?></h2><?php } ?>
         <?php if($settings['info_description']){ ?><p><?php echo wp_kses($settings['info_description'],$allowed_html); ?></p><?php } ?>
     </div>
