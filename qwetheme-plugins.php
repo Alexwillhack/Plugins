@@ -29,9 +29,10 @@ function register_qwetheme_widget( $widgets_manager ) {
 
 	require_once( __DIR__ . '/widgets/slider-widget.php' );
 	require_once( __DIR__ . '/widgets/simple-info-widget.php' );
+	require_once( __DIR__ . '/widgets/our-mission.php' );
 	$widgets_manager->register( new \Elementor_Slider_Widget() );
 	$widgets_manager->register( new \Elementor_Simple_Info_Widget() );
-	
+	$widgets_manager->register( new \Elementor_Our_Mission_Widget() );
 }
 add_action( 'elementor/widgets/register', 'register_qwetheme_widget' );
 
